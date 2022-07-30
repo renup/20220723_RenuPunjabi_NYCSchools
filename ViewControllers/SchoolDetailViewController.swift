@@ -10,11 +10,13 @@ import UIKit
 
 final class SchoolDetailViewController: UIViewController {
     
+    @IBOutlet var detailView: SchoolDetailView!
+    
     var school: School?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = SchoolDetailView()
+        detailView.school = school
     }
     
 }

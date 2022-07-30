@@ -11,33 +11,67 @@ import UIKit
 final class SchoolDetailView: UIView {
     
     var school: School?
+    var viewModel: SchoolDetailViewModel?
     
-    @IBOutlet weak var admissionsPriorityLabel1: UILabel!
+    @IBOutlet weak var detailsTable: UITableView!
     
-    @IBOutlet weak var admissionsPriorityLabel2: UILabel!
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        if let currentSchool = school {
+            viewModel = SchoolDetailViewModel(school: currentSchool)
+        }
+    }
     
-    @IBOutlet weak var admissionsPriorityLabel3: UILabel!
-
-
-    @IBOutlet weak var address: UILabel!
-    
-    @IBOutlet weak var buildingCode: UILabel!
-    
-    @IBOutlet weak var cityLabel: UILabel!
-    
-    @IBOutlet weak var zipLabel: UILabel!
-
-    @IBOutlet weak var stateCodeLabel: UILabel!
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+        if let currentSchool = school {
+            viewModel = SchoolDetailViewModel(school: currentSchool)
+        }
+    }
     
     
-    @IBOutlet weak var phoneLabel: UILabel!
     
-    @IBOutlet weak var faxLabel: UILabel!
-    
-    @IBOutlet weak var emailLabel: UILabel!
-
-
-    @IBOutlet weak var websiteLabel: UILabel!
     
 
 }
+
+extension SchoolDetailView: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel?.numberOfSections ?? 4
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.numberOfRowsInSection(Section(rawValue: section) ?? .website) ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let section = Section(rawValue: indexPath.section) else { return UITableViewCell() }
+        
+        switch section {
+            
+            
+        case .admissionPriority:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? AdmissionPriorityCell else { return UITableViewCell() }
+            return cell
+            
+        case .address:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? AddressCell else { return UITableViewCell() }
+            return cell
+        case .contactInformation:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? SchoolContactCell else { return UITableViewCell() }
+            return cell
+        case .website:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? SchoolWebsiteCell else { return UITableViewCell() }
+            return cell
+        }
+    }
+    
+}
+
+extension SchoolDetailView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+
