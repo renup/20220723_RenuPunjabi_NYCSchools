@@ -10,27 +10,8 @@ import UIKit
 
 final class SchoolDetailView: UIView {
     
-    var school: School?
     var viewModel: SchoolDetailViewModel?
-    
-    @IBOutlet weak var detailsTable: UITableView!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        if let currentSchool = school {
-            viewModel = SchoolDetailViewModel(school: currentSchool)
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        if let currentSchool = school {
-            viewModel = SchoolDetailViewModel(school: currentSchool)
-        }
-    }
-    
-    
-    
+
     
 
 }
@@ -46,25 +27,10 @@ extension SchoolDetailView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = Section(rawValue: indexPath.section) else { return UITableViewCell() }
+        guard let section = Section(rawValue: indexPath.section), let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell") else { return UITableViewCell() }
+        cell.textLabel?.text = viewModel?.textForCell(in: section, at: indexPath.row)
+        return cell
         
-        switch section {
-            
-            
-        case .admissionPriority:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? AdmissionPriorityCell else { return UITableViewCell() }
-            return cell
-            
-        case .address:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? AddressCell else { return UITableViewCell() }
-            return cell
-        case .contactInformation:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? SchoolContactCell else { return UITableViewCell() }
-            return cell
-        case .website:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier) as? SchoolWebsiteCell else { return UITableViewCell() }
-            return cell
-        }
     }
     
 }

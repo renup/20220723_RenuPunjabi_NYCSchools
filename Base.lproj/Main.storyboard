@@ -87,82 +87,40 @@
         <!--School Detail View Controller-->
         <scene sceneID="22H-gm-XQO">
             <objects>
-                <viewController id="djz-R3-ZSY" customClass="SchoolDetailViewController" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XLi-6I-p6f" customClass="SchoolDetailView" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target">
+                <viewController storyboardIdentifier="SchoolDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="djz-R3-ZSY" customClass="SchoolDetailViewController" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XLi-6I-p6f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vaZ-qw-MWv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ils-FR-ZRt">
                                 <rect key="frame" x="20" y="88" width="374" height="774"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdmissionPriorityCell" rowHeight="146" id="exE-dM-MX1" customClass="AdmissionPriorityCell" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="374" height="146"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="97" id="lO1-iE-heI">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="exE-dM-MX1" id="aDm-gA-9wL">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="146"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUX-OE-FF6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="146"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="UUX-OE-FF6" firstAttribute="leading" secondItem="aDm-gA-9wL" secondAttribute="leading" id="2A2-OF-GgZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="UUX-OE-FF6" secondAttribute="bottom" id="Di1-9C-qYk"/>
-                                                <constraint firstItem="UUX-OE-FF6" firstAttribute="top" secondItem="aDm-gA-9wL" secondAttribute="top" id="Lft-TL-toR"/>
-                                                <constraint firstAttribute="trailing" secondItem="UUX-OE-FF6" secondAttribute="trailing" id="fDM-ZT-Yeo"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="admissionLabel" destination="UUX-OE-FF6" id="eNt-JA-Y3e"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressCell" id="sdM-Rp-LYX" customClass="AddressCell" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="195.5" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sdM-Rp-LYX" id="Di0-ex-jpO">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SchoolContactCell" id="qxv-Se-Fik" customClass="SchoolContactCell" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="239" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qxv-Se-Fik" id="XW3-Zl-Rac">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SchoolWebsiteCell" id="vle-HH-zMm" customClass="SchoolWebsiteCell" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="282.5" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vle-HH-zMm" id="5R5-Ep-Ooa">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lO1-iE-heI" id="DoX-l2-0HU">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="djz-R3-ZSY" id="4mu-eE-QUh"/>
-                                    <outlet property="delegate" destination="XLi-6I-p6f" id="oF0-FD-TSx"/>
+                                    <outlet property="dataSource" destination="djz-R3-ZSY" id="9Xq-DR-s2p"/>
+                                    <outlet property="delegate" destination="djz-R3-ZSY" id="WG0-dq-5FQ"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="77K-7F-bXr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="detailsTable" destination="vaZ-qw-MWv" id="yvI-Za-lrS"/>
-                        </connections>
+                        <constraints>
+                            <constraint firstItem="ils-FR-ZRt" firstAttribute="top" secondItem="77K-7F-bXr" secondAttribute="top" id="Bq8-pV-0rc"/>
+                            <constraint firstItem="77K-7F-bXr" firstAttribute="trailing" secondItem="ils-FR-ZRt" secondAttribute="trailing" constant="20" id="NsH-Bc-c9t"/>
+                            <constraint firstItem="ils-FR-ZRt" firstAttribute="leading" secondItem="77K-7F-bXr" secondAttribute="leading" constant="20" id="OkT-wJ-lOu"/>
+                            <constraint firstItem="ils-FR-ZRt" firstAttribute="bottom" secondItem="77K-7F-bXr" secondAttribute="bottom" id="v6f-0R-dCV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BJV-JW-3cG"/>
-                    <connections>
-                        <outlet property="detailView" destination="XLi-6I-p6f" id="egH-FE-hOk"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHS-rN-B6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

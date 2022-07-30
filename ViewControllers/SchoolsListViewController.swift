@@ -61,6 +61,12 @@ extension SchoolsListViewController: UITableViewDataSource {
 extension SchoolsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSchool = schools[indexPath.row]
+
+        // Normally, I'd never do this. I use coordinator pattern to handle navigation for flows.
+        performSegue(withIdentifier: "loadSchoolDetails", sender: nil)
+//        if let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "SchoolDetailViewController") as? SchoolDetailViewController {
+//            self.navigationController?.pushViewController(detailVC, animated: true)
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

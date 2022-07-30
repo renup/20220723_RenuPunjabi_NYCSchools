@@ -9,29 +9,9 @@ import Foundation
 
 enum Section: Int, CaseIterable {
    case admissionPriority, address, contactInformation, website
-    
-    var cellIdentifier: String {
-        switch self {
-        case .admissionPriority:
-            return "AdmissionPriorityCell"
-        case .address:
-            return "AddressCell"
-        case .contactInformation:
-            return "SchoolContactCell"
-        case .website:
-            return "SchoolWebsiteCell"
-        }
-    }
 }
 
 final class SchoolDetailViewModel {
-    
-    struct Constants {
-        static let admissionPriorityCell = "AdmissionPriorityCell"
-        static let addressCell = "AddressCell"
-        static let contactCell = "SchoolContactCell"
-        static let websiteCell = "SchoolWebsiteCell"
-    }
     
     var school: School
     
@@ -59,13 +39,20 @@ final class SchoolDetailViewModel {
         }
     }
     
-//    func identifierForCell(in section: Int) -> String {
-//        guard let sec = Section(rawValue: section) else { return "" }
-//        switch sec {
-//        case .admissionPriority: return Constants.admissionPriorityCell
-//            
-//        }
-//    }
+    func textForCell(in section: Section, at index: Int) -> String {
+        var data = [String]()
+        switch section {
+        case .admissionPriority:
+            data = [school.admissionsPriority1 ?? "", school.admissionsPriority2 ?? "", school.admissionsPriority3 ?? ""]
+        case .address:
+            data = [school.primaryAddress, school.buildingCode ?? "", school.city, school.zip, school.stateCode]
+        case .contactInformation:
+            data = [school.phoneNumber, school.faxNumber ?? "", school.schoolEmail ?? ""]
+        case .website:
+            data = [school.website]
+        }
+        return index < data.count ? data[index] : ""
+    }
     
     
 }
