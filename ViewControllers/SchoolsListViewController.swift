@@ -18,6 +18,8 @@ class SchoolsListViewController: UIViewController {
             schoolsTableView.reloadData()
         }
     }
+    
+    var selectedSchool: School?
 
     @IBOutlet weak var schoolsTableView: UITableView!
     let viewModel = SchoolListViewModel(router: SchoolListRouter())
@@ -58,7 +60,15 @@ extension SchoolsListViewController: UITableViewDataSource {
 
 extension SchoolsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        selectedSchool = schools[indexPath.row]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loadSchoolDetails" {
+               if let detailViewController = segue.destination as? SchoolDetailViewController {
+                   detailViewController.school = selectedSchool
+               }
+        }
     }
 }
 
