@@ -92,17 +92,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ils-FR-ZRt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ils-FR-ZRt">
                                 <rect key="frame" x="20" y="88" width="374" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="97" id="lO1-iE-heI">
-                                        <rect key="frame" x="0.0" y="44.5" width="374" height="97"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="97" id="lO1-iE-heI" customClass="SchoolDetailCell" customModule="_0220723_RenuPunjabi_NYCSchools" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="49.5" width="334" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lO1-iE-heI" id="DoX-l2-0HU">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="97"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUX-4L-FxU">
+                                                    <rect key="frame" x="20" y="11" width="294" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="294" id="ulf-CT-XSi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AUX-4L-FxU" firstAttribute="top" secondItem="DoX-l2-0HU" secondAttribute="topMargin" id="3Af-hF-pkq"/>
+                                                <constraint firstItem="AUX-4L-FxU" firstAttribute="bottom" secondItem="DoX-l2-0HU" secondAttribute="bottomMargin" id="7JR-XG-Z2h"/>
+                                                <constraint firstItem="AUX-4L-FxU" firstAttribute="leading" secondItem="DoX-l2-0HU" secondAttribute="leadingMargin" id="QdP-Fz-awD"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailLabel" destination="AUX-4L-FxU" id="Eah-Xj-NwM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -114,13 +132,16 @@
                         <viewLayoutGuide key="safeArea" id="77K-7F-bXr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ils-FR-ZRt" firstAttribute="top" secondItem="77K-7F-bXr" secondAttribute="top" id="Bq8-pV-0rc"/>
-                            <constraint firstItem="77K-7F-bXr" firstAttribute="trailing" secondItem="ils-FR-ZRt" secondAttribute="trailing" constant="20" id="NsH-Bc-c9t"/>
-                            <constraint firstItem="ils-FR-ZRt" firstAttribute="leading" secondItem="77K-7F-bXr" secondAttribute="leading" constant="20" id="OkT-wJ-lOu"/>
-                            <constraint firstItem="ils-FR-ZRt" firstAttribute="bottom" secondItem="77K-7F-bXr" secondAttribute="bottom" id="v6f-0R-dCV"/>
+                            <constraint firstItem="ils-FR-ZRt" firstAttribute="top" secondItem="77K-7F-bXr" secondAttribute="top" id="5Rx-NF-Xg9"/>
+                            <constraint firstItem="ils-FR-ZRt" firstAttribute="leading" secondItem="XLi-6I-p6f" secondAttribute="leadingMargin" id="ZWu-pg-03v"/>
+                            <constraint firstItem="ils-FR-ZRt" firstAttribute="bottom" secondItem="77K-7F-bXr" secondAttribute="bottom" id="kjI-le-7E0"/>
+                            <constraint firstItem="ils-FR-ZRt" firstAttribute="trailing" secondItem="XLi-6I-p6f" secondAttribute="trailingMargin" id="wNR-Po-eUP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BJV-JW-3cG"/>
+                    <connections>
+                        <outlet property="detailsTableView" destination="ils-FR-ZRt" id="3Cg-Nj-aBV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHS-rN-B6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

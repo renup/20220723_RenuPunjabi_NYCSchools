@@ -27,6 +27,7 @@ class SchoolsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
+        navigationItem.title = "NYC Schools list"
     }
     
     private func getData() {
@@ -43,7 +44,6 @@ class SchoolsListViewController: UIViewController {
             }
         }
     }
-
 }
 
 extension SchoolsListViewController: UITableViewDataSource {
@@ -61,19 +61,16 @@ extension SchoolsListViewController: UITableViewDataSource {
 extension SchoolsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSchool = schools[indexPath.row]
-
+        tableView.deselectRow(at: indexPath, animated: true)
         // Normally, I'd never do this. I use coordinator pattern to handle navigation for flows.
         performSegue(withIdentifier: "loadSchoolDetails", sender: nil)
-//        if let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "SchoolDetailViewController") as? SchoolDetailViewController {
-//            self.navigationController?.pushViewController(detailVC, animated: true)
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loadSchoolDetails" {
-               if let detailViewController = segue.destination as? SchoolDetailViewController {
-                   detailViewController.school = selectedSchool
-               }
+           if let detailViewController = segue.destination as? SchoolDetailViewController {
+               detailViewController.school = selectedSchool
+           }
         }
     }
 }
