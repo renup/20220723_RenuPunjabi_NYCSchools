@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SchoolListRouter: APIRouter {
+class SchoolListRouter: APIRouter {
     
     @discardableResult
     func getHighSchoolList(_ completion: @escaping (Result<[School], APIError>) -> Void) -> URLSessionDataTask? {

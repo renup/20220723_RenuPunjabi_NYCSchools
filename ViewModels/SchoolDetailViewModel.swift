@@ -13,7 +13,7 @@ enum Section: Int, CaseIterable {
     var header: String {
         switch self {
         case .admissionPriority:
-            return "Admission priority".localizedCapitalized
+            return "admission priority".localizedCapitalized
         case .address:
             return "address".localizedCapitalized
         case .contactInformation:
@@ -51,9 +51,9 @@ final class SchoolDetailViewModel {
         }
     }
     
-    // ideally, this data should be driven by backend. The response sent to us is all in same level so had to run through a switch statement like below.
+    // Ideally, this data should be driven by backend. The response sent to us is all in same level so had to run through a switch statement like below.
     
-    //If the response was organized in parts, then we wouldn't need to hardcode the numberOfRows here
+    // If the response was organized in parts, then we wouldn't need to hardcode the numberOfRows here
     func numberOfRowsInSection(_ section: Section) -> Int {
         switch section {
         case .admissionPriority:
