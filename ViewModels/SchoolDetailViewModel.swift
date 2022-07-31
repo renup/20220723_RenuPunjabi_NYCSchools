@@ -98,9 +98,9 @@ final class SchoolDetailViewModel {
             data = ["Website: https://\(school.website)"]
         case .scores:
             data = [
-                "Reading: \(satScores?.reading ?? "0")",
-                "Math: \(satScores?.math ?? "0")",
-                "Writing: \(satScores?.writing ?? "0")"
+                "Reading: \(satScores?.reading ?? "Missing Information")",
+                "Math: \(satScores?.math ?? "Missing Information")",
+                "Writing: \(satScores?.writing ?? "Missing Information")"
             ]
         }
         return index < data.count ? data[index] : ""
