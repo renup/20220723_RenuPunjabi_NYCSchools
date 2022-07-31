@@ -22,7 +22,7 @@ class SchoolsListViewController: UIViewController {
     var selectedSchool: School?
 
     @IBOutlet weak var schoolsTableView: UITableView!
-    let viewModel = SchoolListViewModel(router: SchoolListRouter())
+    let viewModel = SchoolListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

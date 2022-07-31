@@ -8,7 +8,7 @@
 import Foundation
 
 enum Section: Int, CaseIterable {
-   case admissionPriority, address, contactInformation, website
+   case scores, admissionPriority, address, contactInformation, website
     
     var header: String {
         switch self {
@@ -20,6 +20,8 @@ enum Section: Int, CaseIterable {
             return "contact information".localizedCapitalized
         case .website:
             return "website".localizedCapitalized
+        case .scores:
+            return "SAT scores".localizedCapitalized
         }
     }
 }
@@ -28,19 +30,24 @@ final class SchoolDetailViewModel {
     
     var school: School
     var dataSource = [Section]()
+    var satScores: SATScores?
+    var router: SchoolListRouter
     
-    init(school: School) {
+    init(school: School, router: SchoolListRouter = SchoolListRouter()) {
         self.school = school
-        dataSource = createDataSource()
-        print("data source count = \(dataSource.count)")
-        dataSource.map { print($0.header)}
+        self.router = router
+        createDataSource()
     }
     
-    func createDataSource() -> [Section] {
+    func fetchScores(_ completion: @escaping (Result<[SATScores], APIError>) -> Void) {
+        router.getSatScores(dbn: school.dbn, completion)
+    }
+    
+    func createDataSource() {
         if (school.admissionsPriority1 != nil) || (school.admissionsPriority2 != nil) || (school.admissionsPriority3 != nil) {
-            return Section.allCases
+            dataSource = Section.allCases
         } else {
-            return [.address, .contactInformation, .website]
+            dataSource = [.scores, .address, .contactInformation, .website]
         }
     }
     
@@ -63,6 +70,8 @@ final class SchoolDetailViewModel {
             }
         case .website:
             return 1
+        case .scores:
+            return 3
         }
     }
     
@@ -72,11 +81,27 @@ final class SchoolDetailViewModel {
         case .admissionPriority:
             data = [school.admissionsPriority1 ?? "", school.admissionsPriority2 ?? "", school.admissionsPriority3 ?? ""]
         case .address:
-            data = [school.primaryAddress, school.buildingCode ?? "", school.city, school.zip, school.stateCode]
+            data = [
+                "Address line 1: \(school.primaryAddress)",
+                "Building code: \(school.buildingCode ?? "")",
+                "City: \(school.city)",
+                "Zip: \(school.zip)",
+                "State: \(school.stateCode)"
+            ]
         case .contactInformation:
-            data = [school.phoneNumber, school.faxNumber ?? "", school.schoolEmail ?? ""]
+            data = [
+                "Phone number:\(school.phoneNumber)",
+                "Fax number: \(school.faxNumber ?? "")",
+                "Email: \(school.schoolEmail ?? "")"
+            ]
         case .website:
-            data = [school.website]
+            data = ["Website: https://\(school.website)"]
+        case .scores:
+            data = [
+                "Reading: \(satScores?.reading ?? "0")",
+                "Math: \(satScores?.math ?? "0")",
+                "Writing: \(satScores?.writing ?? "0")"
+            ]
         }
         return index < data.count ? data[index] : ""
     }

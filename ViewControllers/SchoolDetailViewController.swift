@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// https://data.cityofnewyork.us/resource/f9bf-2cp4.json?dbn=01M292
 final class SchoolDetailViewController: UIViewController {
         
     @IBOutlet weak var detailsTableView: UITableView!
@@ -15,14 +16,33 @@ final class SchoolDetailViewController: UIViewController {
     var school: School?
     var viewModel: SchoolDetailViewModel?
     
+    var scores: SATScores? {
+        didSet {
+            detailsTableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let currentSchool = school {
             viewModel = SchoolDetailViewModel(school: currentSchool)
         }
         navigationItem.title = school?.schoolName
-        self.detailsTableView.setContentOffset(CGPoint(x: 0, y: 44), animated: false)
-
+        fetchScores()
+    }
+    
+    func fetchScores() {
+        viewModel?.fetchScores {[weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let scores):
+                strongSelf.viewModel?.satScores = scores.first
+                strongSelf.viewModel?.createDataSource()
+                strongSelf.scores = scores.first
+            case .failure(let err):
+                print("handle the fetching of scores error = \(err.description)")
+            }
+        }
     }
 }
 

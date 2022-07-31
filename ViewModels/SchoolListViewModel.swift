@@ -11,7 +11,7 @@ final class SchoolListViewModel {
     
     var router: SchoolListRouter
 
-    init(router: SchoolListRouter) {
+    init(router: SchoolListRouter = SchoolListRouter()) {
         self.router = router
     }
     

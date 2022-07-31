@@ -8,6 +8,7 @@
 import Foundation
 
 struct School: Decodable {
+    let dbn: String
     let schoolName: String
     let neighborhood: String
     let schoolSports: String?
@@ -33,6 +34,7 @@ struct School: Decodable {
 
     
     enum CodingKeys: String, CodingKey {
+        case dbn
         case schoolName = "school_name"
         case neighborhood
         case schoolSports = "school_sports"
@@ -52,3 +54,5 @@ struct School: Decodable {
         case stateCode = "state_code"
     }
 }
+
+
