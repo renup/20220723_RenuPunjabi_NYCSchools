@@ -51,9 +51,9 @@ final class SchoolDetailViewModel {
         }
     }
     
-    // Ideally, this data should be driven by backend. The response sent to us is all in same level so had to run through a switch statement like below.
+    // Ideally, this data should be driven by backend. The response sent to us is all in same level so had to run through a switch statement with hard coded values like below.
     
-    // If the response was organized in parts, then we wouldn't need to hardcode the numberOfRows here
+    // If the response was organized in parts/groups or if backend could send us this info directly, then we wouldn't need to hardcode the numberOfRows here
     func numberOfRowsInSection(_ section: Section) -> Int {
         switch section {
         case .admissionPriority:

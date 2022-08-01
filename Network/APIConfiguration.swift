@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Protocol to help facilitate creation of URL request during network calls
 protocol APIConfiguration {
     var path: String { get }
     var method: String { get }

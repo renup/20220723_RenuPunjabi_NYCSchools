@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Model: to covert network raw response (json format) into a structure to help display data for the user
 struct School: Decodable {
     let dbn: String
     let schoolName: String

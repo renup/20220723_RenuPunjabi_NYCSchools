@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Custom Error to help handle/display specific errors to users or for development purposes
 enum APIError: Error {
     case invalidEndpoint
     case missingData
@@ -30,6 +31,7 @@ enum APIError: Error {
     }
 }
 
+/// Network - protocol to execute fetch for a URLRequest. Provides default implementation. This implentation of fetch covers the boiler plate code for each kind of GET network request.
 protocol APIRouter {
     
     @discardableResult
@@ -45,6 +47,7 @@ extension APIRouter {
         return components?.url
     }
     
+    /// If had more time, I'd like to save the downloaded data in some caching mechanism depending on the end goal/usage of this data.
     func fetch<T: Decodable>(route: APIConfiguration, completion: @escaping(Result<T, APIError>) -> Void) -> URLSessionDataTask? {
         
         guard let url = getURL(route: route) else {

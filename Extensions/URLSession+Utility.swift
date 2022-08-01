@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// This extension is just to return back the network response in Result type completion
 extension URLSession {
     func dataTask(with url: URL, result: @escaping (Result<(URLResponse, Data), Error>) -> Void) -> URLSessionDataTask {
     

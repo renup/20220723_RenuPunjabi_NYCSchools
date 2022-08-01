@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-// https://data.cityofnewyork.us/resource/f9bf-2cp4.json?dbn=01M292
 final class SchoolDetailViewController: UIViewController {
         
     @IBOutlet weak var detailsTableView: UITableView!
